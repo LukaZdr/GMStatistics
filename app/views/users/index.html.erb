@@ -1,0 +1,12 @@
+<h1>Player Ranking</h1>
+
+<% @users.each do |user| %>
+  <div class="alert alert-info">
+    <div class="row">
+      <div class='col-1'> rank </div>
+      <div class='col-1'> Profilbild </div>
+      <div class='col-1'> <%= user.name %> </div>
+      <div class='col-1'> user overall points </div>
+    </div>
+  </div>
+<% end %>

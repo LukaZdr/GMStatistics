@@ -13,10 +13,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
  private
-  def user_params
-    params.require(:user).permit(:name, :steam_id)
-  end
-
   def server_error
     render :nothing => true, :status => :internal_server_error
   end

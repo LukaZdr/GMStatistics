@@ -3,17 +3,25 @@ class Api::V1::UsersController < ApplicationController
 
 # POST api/v1/users
   def create
-    @user = User.find_by_steam_id.first_or_create(user_params)
-    debugger
-    if @user.save
-      render json: @user, status: :success
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    user = User.where(steam_id: params['user']['steam_id']).first_or_initialize(name: params['user']['name'])
+    server_error unless user.save
+
+    login_time = LoginTime.create!(user: user, time: DateTime.strptime(params[:time].to_s,'%s'))
+    server_error unless login_time.save
+
+    success
   end
 
  private
   def user_params
     params.require(:user).permit(:name, :steam_id)
+  end
+
+  def server_error
+    render :nothing => true, :status => :internal_server_error
+  end
+
+  def success
+    render :nothing => true, :status => :ok
   end
 end

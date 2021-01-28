@@ -10,15 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_155232) do
+ActiveRecord::Schema.define(version: 2021_01_27_181356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_sessions", force: :cascade do |t|
+    t.bigint "map_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["map_id"], name: "index_game_sessions_on_map_id"
+  end
 
   create_table "login_times", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "time"
     t.index ["user_id"], name: "index_login_times_on_user_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.boolean "innocent_win"
+    t.bigint "game_session_id"
+    t.index ["game_session_id"], name: "index_rounds_on_game_session_id"
   end
 
   create_table "server_starts", force: :cascade do |t|

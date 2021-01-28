@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.where(steam_id: params['user']['steam_id']).first_or_initialize(name: params['user']['name'])
     server_error unless user.save
 
-    login_time = LoginTime.create!(user: user, time: DateTime.strptime(params[:time].to_s,'%s'))
+    login_time = LoginTime.new(user: user, time: DateTime.strptime(params[:time].to_s,'%s'))
     server_error unless login_time.save
 
     success

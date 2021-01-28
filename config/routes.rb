@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index]
 
-  # Api Endpoints
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create]
       resources :server_starts, only: [:create]
+      resources :round, only: [:create]
     end
   end
-end
+end 

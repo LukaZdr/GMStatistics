@@ -16,6 +16,7 @@ class Api::V1::RoundsController < ApplicationController
 
   def update
     current_round.update(win_reason: params['reason'])
+
     # save in roundparticipant if he/she survied the round
     # ping
   end

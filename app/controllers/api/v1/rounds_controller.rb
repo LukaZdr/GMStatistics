@@ -33,7 +33,9 @@ class Api::V1::RoundsController < ApplicationController
     users.each do |user_data|
       user = User.find_by_steam_id(user_data['user_steam_id'])
       PingSample.create(user: user, ping: user_data['ping'])
-      update_params = collection_params.merge({ karma: user_data['karma'] })
+      update_params = collection_params.merge({ karma: user_data['karma'],
+                                                score: user_data['stats']['score'],
+                                                credits: user_data['credits'] })
       RoundParticipant.first_or_create(user: user, round: current_round).update(update_params)
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_181356) do
+ActiveRecord::Schema.define(version: 2021_01_28_221543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,23 @@ ActiveRecord::Schema.define(version: 2021_01_27_181356) do
     t.string "name"
   end
 
+  create_table "ping_samples", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "ping"
+    t.datetime "created_at", null: false
+    t.index ["user_id"], name: "index_ping_samples_on_user_id"
+  end
+
+  create_table "round_participants", force: :cascade do |t|
+    t.bigint "round_id"
+    t.bigint "user_id"
+    t.string "role"
+    t.integer "karma"
+    t.integer "score"
+    t.index ["round_id"], name: "index_round_participants_on_round_id"
+    t.index ["user_id"], name: "index_round_participants_on_user_id"
+  end
+
   create_table "rounds", force: :cascade do |t|
     t.boolean "innocent_win"
     t.bigint "game_session_id"
@@ -49,4 +66,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_181356) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ping_samples", "users"
+  add_foreign_key "round_participants", "rounds"
+  add_foreign_key "round_participants", "users"
 end

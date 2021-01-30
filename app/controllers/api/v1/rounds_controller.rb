@@ -1,4 +1,4 @@
-class Api::V1::RoundController < ApplicationController
+class Api::V1::RoundsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
 # POST api/v1/round
@@ -12,6 +12,12 @@ class Api::V1::RoundController < ApplicationController
     save_round_users('traitor', params['traitors'])
     save_round_users('spectator', params['spectators'])
     success
+  end
+
+  def update
+    current_round.update(win_reason: params['reason'])
+    # save in roundparticipant if he/she survied the round
+    # ping
   end
 
  private

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       resources :server_starts, only: [:create]
-      resources :round, only: [:create]
+      resource :round, only: [:create, :update] # this is a singe recource so the update doesn't axpect an id
     end
   end
 end 

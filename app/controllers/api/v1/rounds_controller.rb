@@ -1,7 +1,7 @@
 class Api::V1::RoundsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-# POST api/v1/round
+# POST api/v1/rounds
   def create
     map = Map.where(name: params['map']).first_or_create!
     GameSession.create!(map: map) if current_game_session&.map != map
@@ -16,8 +16,8 @@ class Api::V1::RoundsController < ApplicationController
 
   def end
     current_round.update(win_reason: params['reason'])
-    save_round_users(params['result']['dead'], { survived: false})
-    save_round_users(params['result']['survived'], { survived: true})
+    save_round_users(params['result']['dead'], { survived: false })
+    save_round_users(params['result']['survived'], { survived: true })
   end
 
  private

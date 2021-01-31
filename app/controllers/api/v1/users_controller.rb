@@ -28,6 +28,4 @@ class Api::V1::UsersController < ApplicationController
   def success
     render :nothing => true, :status => :ok
   end
-
-
 end

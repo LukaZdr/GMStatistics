@@ -36,7 +36,7 @@ class Api::V1::RoundsController < ApplicationController
       update_params = collection_params.merge({ karma: user_data['karma'],
                                                 score: user_data['stats']['score'],
                                                 credits: user_data['credits'] })
-      RoundParticipant.first_or_create(user: user, round: current_round).update(update_params)
+      RoundParticipant.where(user: user, round: current_round).first_or_create.update(update_params)
     end
   end
 end

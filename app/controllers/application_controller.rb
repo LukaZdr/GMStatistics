@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   def current_game_session
     GameSession.last
@@ -8,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def epoch_to_datetime(epoch)
-    DateTime.strptime(epoch.to_s,'%s')
+    DateTime.strptime(epoch.to_s, '%s')
   end
 end

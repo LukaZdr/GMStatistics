@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,73 +12,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_141017) do
-
+ActiveRecord::Schema.define(version: 20_210_131_141_017) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "game_sessions", force: :cascade do |t|
-    t.bigint "map_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["map_id"], name: "index_game_sessions_on_map_id"
+  create_table 'game_sessions', force: :cascade do |t|
+    t.bigint 'map_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['map_id'], name: 'index_game_sessions_on_map_id'
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "item_slot"
-    t.string "ammo_type"
+  create_table 'items', force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'item_slot'
+    t.string 'ammo_type'
   end
 
-  create_table "login_times", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "logout"
-    t.datetime "login"
-    t.string "logout_reason"
-    t.index ["user_id"], name: "index_login_times_on_user_id"
+  create_table 'login_times', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.datetime 'logout'
+    t.datetime 'login'
+    t.string 'logout_reason'
+    t.index ['user_id'], name: 'index_login_times_on_user_id'
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.string "name"
+  create_table 'maps', force: :cascade do |t|
+    t.string 'name'
   end
 
-  create_table "ping_samples", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "ping"
-    t.datetime "created_at", null: false
-    t.index ["user_id"], name: "index_ping_samples_on_user_id"
+  create_table 'ping_samples', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.integer 'ping'
+    t.datetime 'created_at', null: false
+    t.index ['user_id'], name: 'index_ping_samples_on_user_id'
   end
 
-  create_table "round_participants", force: :cascade do |t|
-    t.bigint "round_id"
-    t.bigint "user_id"
-    t.string "role"
-    t.integer "karma"
-    t.integer "score"
-    t.boolean "survived"
-    t.integer "credits"
-    t.index ["round_id"], name: "index_round_participants_on_round_id"
-    t.index ["user_id"], name: "index_round_participants_on_user_id"
+  create_table 'round_participants', force: :cascade do |t|
+    t.bigint 'round_id'
+    t.bigint 'user_id'
+    t.string 'role'
+    t.integer 'karma'
+    t.integer 'score'
+    t.boolean 'survived'
+    t.integer 'credits'
+    t.index ['round_id'], name: 'index_round_participants_on_round_id'
+    t.index ['user_id'], name: 'index_round_participants_on_user_id'
   end
 
-  create_table "rounds", force: :cascade do |t|
-    t.bigint "game_session_id"
-    t.string "win_reason"
-    t.index ["game_session_id"], name: "index_rounds_on_game_session_id"
+  create_table 'rounds', force: :cascade do |t|
+    t.bigint 'game_session_id'
+    t.string 'win_reason'
+    t.index ['game_session_id'], name: 'index_rounds_on_game_session_id'
   end
 
-  create_table "server_starts", force: :cascade do |t|
-    t.datetime "time"
+  create_table 'server_starts', force: :cascade do |t|
+    t.datetime 'time'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "steam_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'steam_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "ping_samples", "users"
-  add_foreign_key "round_participants", "rounds"
-  add_foreign_key "round_participants", "users"
+  add_foreign_key 'ping_samples', 'users'
+  add_foreign_key 'round_participants', 'rounds'
+  add_foreign_key 'round_participants', 'users'
 end

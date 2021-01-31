@@ -1,20 +1,27 @@
-class Api::V1::ServerStartsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+# frozen_string_literal: true
 
-# POST api/v1/server_starts
-  def create
-    server_start = ServerStart.new(time: DateTime.strptime(params[:time].to_s,'%s'))
-    server_error unless server_start.save
+module Api
+  module V1
+    class ServerStartsController < ApplicationController
+      skip_before_action :verify_authenticity_token
 
-    success
-  end
+      # POST api/v1/server_starts
+      def create
+        server_start = ServerStart.new(time: DateTime.strptime(params[:time].to_s, '%s'))
+        server_error unless server_start.save
 
- private
-  def server_error
-    render :nothing => true, :status => :internal_server_error
-  end
+        success
+      end
 
-  def success
-    render :nothing => true, :status => :ok
+      private
+
+      def server_error
+        render nothing: true, status: :internal_server_error
+      end
+
+      def success
+        render nothing: true, status: :ok
+      end
+    end
   end
 end

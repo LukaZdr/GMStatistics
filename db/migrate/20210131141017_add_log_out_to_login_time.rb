@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddLogOutToLoginTime < ActiveRecord::Migration[5.2]
   def change
     remove_column :login_times, :time, :datetime

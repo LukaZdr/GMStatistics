@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def current_round_participant
     round_participants.last
   end
+
+  def current_login
+    login_times.last
+  end
 end

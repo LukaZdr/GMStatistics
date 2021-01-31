@@ -1,4 +1,4 @@
 class LoginTime < ApplicationRecord
-  validates :time, presence: true
+  validates :login, presence: true
   belongs_to :user
 end

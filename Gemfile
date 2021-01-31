@@ -21,6 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 4.0.2'
+  gem 'factory_bot'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do

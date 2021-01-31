@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTimestampsToGameSession < ActiveRecord::Migration[5.2]
   def change
     add_column :game_sessions, :created_at, :datetime, null: false

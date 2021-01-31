@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'landing_page#show'
 
-  resources :users, only: [:show, :index]
+  resources :users, only: %i[show index]
 
   namespace :api do
     namespace :v1 do

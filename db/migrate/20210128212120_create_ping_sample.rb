@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePingSample < ActiveRecord::Migration[5.2]
   def change
     create_table :ping_samples do |t|

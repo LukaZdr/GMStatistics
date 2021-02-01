@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
   def epoch_to_datetime(epoch)
     DateTime.strptime(epoch.to_s, '%s')
   end
+
+  def server_error
+    render json: {}, status: 500
+  end
+
+  def success
+    render json: {}, status: 200
+  end
 end

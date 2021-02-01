@@ -7,20 +7,10 @@ module Api
 
       # POST api/v1/server_starts
       def create
-        server_start = ServerStart.new(time: DateTime.strptime(params[:time].to_s, '%s'))
-        server_error unless server_start.save
+        server_start = ServerStart.new(time: epoch_to_datetime(params[:time]))
+        return server_error unless server_start.save
 
-        success
-      end
-
-      private
-
-      def server_error
-        render nothing: true, status: :internal_server_error
-      end
-
-      def success
-        render nothing: true, status: :ok
+        return success
       end
     end
   end

@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.8'
 
+gem 'activerecord_json_validator'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'coffee-rails', '~> 4.2'

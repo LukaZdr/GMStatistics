@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :user_round_actions, only: [:create]
+      resources :server_starts, only: [:create]
       resources :users, only: [:create] do
         patch :logout, on: :collection
       end
-      resources :server_starts, only: [:create]
       resources :rounds, only: [:create] do
         patch :end, on: :collection
       end

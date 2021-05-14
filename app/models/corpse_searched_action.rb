@@ -2,6 +2,7 @@ class CorpseSearchedAction < UserRoundAction
   JSON_SCHEMA = Rails.root.join('config', 'schemas', 'corpse_searched_data.json_schema').to_s
   validates :data, json: { schema: JSON_SCHEMA }
 
+
   def self.build(params, round)
     user = User.find_by_steam_id(params['user_steam_id'])
     # TODO Needs Ping

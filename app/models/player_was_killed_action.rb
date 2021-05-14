@@ -1,6 +1,8 @@
 class PlayerWasKilledAction < UserRoundAction
   JSON_SCHEMA = Rails.root.join('config', 'schemas', 'player_was_killed_data.json_schema').to_s
   validates :data, json: { schema: JSON_SCHEMA }
+  belongs_to :user # victim
+  belongs_to :round
 
 
   def self.build(params, round)

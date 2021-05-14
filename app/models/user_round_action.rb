@@ -11,6 +11,11 @@ class UserRoundAction < ApplicationRecord
     'revived_player'=> nil,  # TODO - couldnt find reference 
     'player_was_killed'=> PlayerWasKilledAction }.freeze # TODO - complex
 
+    ACTION_TYPE_PAYLOAD_VALIDATION = {
+      'corpse_searched'=> Rails.root.join('config', 'schemas', 'corpse_searched_data.json_schema').to_s
+    }
+
+  validates :data, json: { schema: ACTION_TYPE_PAYLOAD_VALIDATION[self.type] }
 
   belongs_to :user
   belongs_to :round

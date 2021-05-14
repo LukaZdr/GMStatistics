@@ -5,11 +5,12 @@ class UserRoundAction < ApplicationRecord
   ACTION_TYPES = {
     'picked_up_weapon' => PickedUpWeapon,
     'bought_equipment'=> BoughtEquipment,
-    'searched_corpse'=> nil,
-    'found_dna'=> nil,
-    'took_damage'=> nil,
-    'revived_player'=> nil,
-    'died'=> nil }.freeze
+    'corpse_searched'=> CorpseSearchedAction, # TODO - how to save victim inside json?
+    'found_dna'=> FounDNAAction, # TODO - how to save victim inside json?
+    'player_hurt'=> PlayerHurtAction,  # TODO - how to save victim inside json, waaaay to complex?
+    'revived_player'=> nil,  # TODO - couldnt find reference 
+    'player_was_killed'=> PlayerWasKilledAction }.freeze # TODO - complex
+
 
   belongs_to :user
   belongs_to :round

@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.8'
+ruby '3.0.1'
 
 gem 'activerecord_json_validator'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+gem 'rails', '~> 6.1', '>= 6.1.3.2'
 gem 'rubocop'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
@@ -23,7 +23,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 4.0.2'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'faker'
 end
 
 group :development do

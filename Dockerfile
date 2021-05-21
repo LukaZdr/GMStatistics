@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:3.0.1
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 WORKDIR /gm_statistics
 COPY Gemfile /gm_statistics/Gemfile
